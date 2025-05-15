@@ -1,5 +1,8 @@
 import { useEffect, useRef, useState } from "react";
+import { FaArrowDown } from "react-icons/fa";
 
+import Icons from "./Icons";
+import Name from "./Name";
 export default function Head() {
   const canvasRef = useRef(null);
   const [dimensions, setDimensions] = useState({
@@ -94,11 +97,51 @@ export default function Head() {
     };
   }, [dimensions]);
 
-  return (
-    <div className="relative overflow-hidden bg-[#0f1d30]  text-white min-h-screen px-45 ">
-      <canvas ref={canvasRef} className="absolute top-0 left-0 block z-10" />
+   const [rotation, setRotation] = useState(0);
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRotation((prevRotation) => (prevRotation + 1) % 360);
+    }, 10); // Update every 10ms for smooth rotation
+    return () => clearInterval(interval);
+  }, []);
 
-     
+  return (
+    <div className="relative overflow-hidden bg-[#0f1d30]  text-white min-h-screen px-45  content-center">
+      <canvas ref={canvasRef} className="absolute top-0 left-0 block " />
+
+      <div className="flex flex-col items-center  text-center">
+           <div className="relative w-40 h-40 mx-auto my-10">
+      <div 
+        className="absolute inset-0 rounded-full bg-gradient-to-r from-teal-700 via-teal-300 to-teal-700"
+        style={{ transform: `rotate(${rotation}deg)` }}
+      ></div>
+      
+      <div className="absolute top-1.5 left-1.5 right-1.5 bottom-1.5 rounded-full overflow-hidden bg-white">
+        <img
+          src="https://portfolio-omega-three-15.vercel.app/assets/profile-BeORmnjr.jpg"
+          alt="Profile"
+          className="w-full h-full object-cover"
+        />
+      </div>
+    </div>
+        <div>
+        <Name/>
+          <p className="text-lg font-medium text-gray-300">
+            I am a frontend web developer. I can provide clean code and pixel
+            perfect design. I also make website more & more <br /> interactive
+            with web animations.
+          </p>
+        </div>
+
+        <div className="icons">
+            <Icons/>
+        </div>
+
+        <div className="justify-items-center flex gap-2 items-center py-3 mt-50">
+          <FaArrowDown className="  animate-bounce" /> <span>SCROLL DOWN</span>
+        </div>
+      </div>
     </div>
   );
 }
