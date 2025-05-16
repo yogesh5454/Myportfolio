@@ -1,0 +1,68 @@
+    @keyframes moveInsideBorder {
+      /* Move along top border from left to right */
+      0% { left: 0; top: 0; transform: translate(0, 5px); }
+      24.9% { left: 100%; top: 0; transform: translate(-5px, 5px); }
+      
+      /* Move along right border from top to bottom */
+      25% { left: 100%; top: 0; transform: translate(-5px, 5px); }
+      49.9% { left: 100%; top: 100%; transform: translate(-5px, -5px); }
+      
+      /* Move along bottom border from right to left */
+      50% { left: 100%; top: 100%; transform: translate(-5px, -5px); }
+      74.9% { left: 0; top: 100%; transform: translate(0, -5px); }
+      
+      /* Move along left border from bottom to top */
+      75% { left: 0; top: 100%; transform: translate(0, -5px); }
+      100% { left: 0; top: 0; transform: translate(0, 5px); }
+    }
+    
+    .border-wrapper {
+      position: relative;
+      padding: 0;
+      border-radius: 0.9rem;
+    }
+    
+    .border-image {
+      position: relative;
+      border: 10px solid rgba(74, 222, 128, 0.2);
+      border-radius: 0.375rem;
+      overflow: visible;
+    }
+    
+    .dot-path {
+      position: absolute;
+      top: -15px;
+      left: -15px;
+      width: calc(100% + 20px);
+      height: calc(100% + 20px);
+      z-index: 10;
+      pointer-events: none;
+    }
+    
+    .animate-circle {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: #4ecca3;
+      z-index: 30;
+      animation: moveInsideBorder 10s linear infinite;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .dot-2 {
+      animation-delay: -2.5s;
+    }
+    
+    .dot-3 {
+      animation-delay: -5s;
+    }
+    
+    .dot-4 {
+      animation-delay: -7.5s;
+    }
+    
+    .text-primary {
+      color: #4ade80;
+    }
