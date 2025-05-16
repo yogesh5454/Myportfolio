@@ -33,7 +33,7 @@ const Skills = () => {
       icons: <RiTailwindCssFill />,
     },
     {
-      label:"Bootstrap",
+      label: "Bootstrap",
       icons: <FaBootstrap />,
     },
     {
@@ -55,7 +55,7 @@ const Skills = () => {
       <div className="bg-[#111c30] py-15 px-45">
         <div className="relative overflow-hidden pb-14 text-center">
           <h2 className="relative z-10 mb-2 uppercase text-white text-5xl py-3 font-semibold">
-          My  Skills
+            My Skills
           </h2>
 
           <div className="relative z-10 mx-auto h-1 w-40 bg-gradient-to-r from-transparent via-teal-400 to-transparent rounded-full overflow-hidden">
@@ -72,9 +72,14 @@ const Skills = () => {
 
         <div className="flex flex-wrap gap-5">
           {skills.map((skill, index) => (
-            <div className="bg-[#1a2437]  p-5 w-79 justify-items-center rounded-lg transition-transform duration-500 delay-100 hover:-translate-y-2" key={index}>
+            <div
+              className="bg-[#1a2437]  p-5 w-79 justify-items-center rounded-lg transition-transform duration-500 delay-100 hover:-translate-y-2"
+              key={index}
+            >
               <div className="text-[#4ecca3] text-8xl pb-7 ">{skill.icons}</div>
-              <h1 className="text-white text-2xl pb-4 font-semibold">{skill.label}</h1>
+              <h1 className="text-white text-2xl pb-4 font-semibold">
+                {skill.label}
+              </h1>
             </div>
           ))}
         </div>
