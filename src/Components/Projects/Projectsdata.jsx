@@ -103,6 +103,7 @@ const Projectsdata = () => {
     }
   };
 
+  
   return (
     <div>
       <div className="text-white justify-center gap-5 text-xl py-10 flex flex-wrap">
