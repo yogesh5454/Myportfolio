@@ -1,5 +1,6 @@
 import React from "react";
 import { CiShare1 } from "react-icons/ci";
+import { RiShareBoxFill } from "react-icons/ri";
 import { FaGithub } from "react-icons/fa";
 const Projectsdatafun = ({
   image,
@@ -27,7 +28,7 @@ const Projectsdatafun = ({
             onClick={() => handleRedirect(liveDemoUrl)}
             className="w-10 text-xl cursor-pointer h-10 bg-[#4ecca3] rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300"
           >
-            <CiShare1 />
+           <RiShareBoxFill/>
           </button>
           <button
             onClick={() => handleRedirect(codeUrl)}
