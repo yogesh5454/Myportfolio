@@ -29,7 +29,6 @@ function App() {
       <div id="contact">
         <Finalcontact />
       </div>
-      <Footer />
     <Footer/>
     </>
   )

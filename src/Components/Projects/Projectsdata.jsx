@@ -120,9 +120,9 @@ const Projectsdata = () => {
 
   const filterOptions = [
     { id: "all", label: "ALL" },
-    { id: "react", label: "REACT JS" },
+    { id: "react", label: "REACT " },
     { id: "html&css", label: "HTML & CSS" },
-    { id: "js", label: "NODE JS" },
+    { id: "js", label: " JS" },
   ];
 
   return (

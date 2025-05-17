@@ -1,6 +1,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { FaArrowDown } from "react-icons/fa";
+import profile from "../images/profile.jpg";
 
 import Icons from "./Icons";
 import Name from "./Name";
@@ -135,8 +136,10 @@ export default function Head() {
 
   return (
     <div id="home" className="relative overflow-hidden bg-[#0f1d30] text-white min-h-screen px-4 md:px-10 lg:px-20 flex items-center justify-center">
-      <canvas ref={canvasRef} className="absolute top-0 left-0 w-full h-full" />
-      <div className="flex flex-col items-center text-center max-w-2xl">
+      {/* Canvas with lower z-index to ensure it doesn't block the mobile menu */}
+      <canvas ref={canvasRef} className="absolute top-0 left-0 w-full h-full z-0" />
+      
+      <div className="relative z-10 flex flex-col items-center text-center max-w-2xl">
         <div className="relative w-32 h-32 md:w-40 md:h-40 mx-auto my-6 md:my-10">
           <div 
             className="absolute inset-0 rounded-full bg-gradient-to-r from-teal-700 via-teal-300 to-teal-700"
@@ -144,7 +147,7 @@ export default function Head() {
           ></div>
           <div className="absolute top-1.5 left-1.5 right-1.5 bottom-1.5 rounded-full overflow-hidden bg-white">
             <img
-              src="https://portfolio-omega-three-15.vercel.app/assets/profile-BeORmnjr.jpg"
+              src={profile}
               alt="Profile"
               className="w-full h-full object-cover"
             />

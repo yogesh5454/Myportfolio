@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { IoDocumentTextOutline } from "react-icons/io5";
 import { FaBars, FaTimes } from "react-icons/fa";
-import './animation.css';
 
 const Nav = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [visible, setVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const [activeSection, setActiveSection] = useState('home');
 
   // Handle scroll events
   useEffect(() => {
@@ -29,21 +27,6 @@ const Nav = () => {
       
       setScrolled(isScrolled);
       setLastScrollY(currentScrollY);
-
-      // Check which section is currently in view
-      const sections = ['home', 'about', 'skills', 'resume', 'works', 'contact'];
-      
-      for (const sectionId of sections) {
-        const section = document.getElementById(sectionId);
-        if (section) {
-          const rect = section.getBoundingClientRect();
-          // If the section is in the viewport (or slightly above it)
-          if (rect.top <= 150 && rect.bottom >= 150) {
-            setActiveSection(sectionId);
-            break;
-          }
-        }
-      }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -76,10 +59,10 @@ const Nav = () => {
 
   return (
     <div 
-      className={`${scrolled ? 'fixed top-0 left-0 right-0 shadow-lg z-50 nav-scrolled' : 'relative'} 
+      className={`${scrolled ? 'fixed top-0 left-0 right-0 shadow-lg transition-transform duration-300 ease-in-out z-40' : 'relative z-40'} 
         ${visible || !scrolled ? 'translate-y-0' : '-translate-y-full'}
-        ${scrolled ? 'border-b border-gray-800 bg-[#0f1d30]/95 backdrop-blur-sm' : 'bg-[#0f1d30]'}
-        px-4 sm:px-8 md:px-12 lg:px-20 py-4 transition-all duration-300`}
+        ${scrolled ? 'border-b border-gray-800' : ''}
+        bg-[#0f1d30] px-4 sm:px-8 md:px-12 lg:px-20 py-4 transition-all duration-300`}
     >
       <div className='flex justify-between items-center'>
         <div className='logo'>
@@ -95,31 +78,31 @@ const Nav = () => {
         <div className='hidden md:flex navbars text-white items-center gap-8 text-sm sm:text-base'>
           <a 
             onClick={() => scrollToSection('home')} 
-            className={`hover:underline underline-offset-8 decoration-[#72e3af] decoration-3 cursor-pointer transition-colors duration-300 ${activeSection === 'home' ? 'nav-active text-teal-400' : ''}`}
+            className='hover:underline underline-offset-8 decoration-[#72e3af] decoration-3 cursor-pointer'
           >
             HOME
           </a>
           <a 
             onClick={() => scrollToSection('about')} 
-            className={`hover:underline underline-offset-8 decoration-[#72e3af] decoration-3 cursor-pointer transition-colors duration-300 ${activeSection === 'about' ? 'nav-active text-teal-400' : ''}`}
+            className='hover:underline underline-offset-8 decoration-[#72e3af] decoration-3 cursor-pointer'
           >
             ABOUT
           </a>
           <a 
             onClick={() => scrollToSection('resume')} 
-            className={`hover:underline underline-offset-8 decoration-[#72e3af] decoration-3 cursor-pointer transition-colors duration-300 ${activeSection === 'resume' ? 'nav-active text-teal-400' : ''}`}
+            className='hover:underline underline-offset-8 decoration-[#72e3af] decoration-3 cursor-pointer'
           >
             RESUME
           </a>
           <a 
             onClick={() => scrollToSection('works')} 
-            className={`hover:underline underline-offset-8 decoration-[#72e3af] decoration-3 cursor-pointer transition-colors duration-300 ${activeSection === 'works' ? 'nav-active text-teal-400' : ''}`}
+            className='hover:underline underline-offset-8 decoration-[#72e3af] decoration-3 cursor-pointer'
           >
             WORKS
           </a>
           <a 
             onClick={() => scrollToSection('contact')} 
-            className={`hover:underline underline-offset-8 decoration-[#72e3af] decoration-3 cursor-pointer transition-colors duration-300 ${activeSection === 'contact' ? 'nav-active text-teal-400' : ''}`}
+            className='hover:underline underline-offset-8 decoration-[#72e3af] decoration-3 cursor-pointer'
           >
             CONTACT
           </a>
@@ -132,19 +115,19 @@ const Nav = () => {
         </div>
       </div>
 
-      {/* Fullscreen Mobile Menu */}
+      {/* Fullscreen Mobile Menu - Increased z-index and used fixed positioning with pointer-events-auto */}
       {menuOpen && (
-        <div className='fixed top-0 left-0 w-full h-screen bg-[#0f1d30] flex flex-col items-center justify-center gap-6 z-40 text-white text-lg'>
+        <div className='fixed inset-0 w-full h-screen bg-[#0f1d30] flex flex-col items-center justify-center gap-6 z-50 text-white text-lg pointer-events-auto'>
           <button onClick={() => setMenuOpen(false)} className='absolute top-6 right-6 text-3xl text-[#72e3af]'>
             <FaTimes />
           </button>
-          <a onClick={() => scrollToSection('home')} className={`hover:text-[#72e3af] cursor-pointer transition-colors duration-300 ${activeSection === 'home' ? 'text-teal-400' : ''}`}>HOME</a>
-          <a onClick={() => scrollToSection('about')} className={`hover:text-[#72e3af] cursor-pointer transition-colors duration-300 ${activeSection === 'about' ? 'text-teal-400' : ''}`}>ABOUT</a>
-          <a onClick={() => scrollToSection('resume')} className={`hover:text-[#72e3af] cursor-pointer transition-colors duration-300 ${activeSection === 'resume' ? 'text-teal-400' : ''}`}>RESUME</a>
-          <a onClick={() => scrollToSection('works')} className={`hover:text-[#72e3af] cursor-pointer transition-colors duration-300 ${activeSection === 'works' ? 'text-teal-400' : ''}`}>WORKS</a>
-          <a onClick={() => scrollToSection('contact')} className={`hover:text-[#72e3af] cursor-pointer transition-colors duration-300 ${activeSection === 'contact' ? 'text-teal-400' : ''}`}>CONTACT</a>
-          <button className='bg-[#72e3af] px-6 py-2 text-black hover:bg-white rounded-sm text-base transition-colors duration-300'>
-            RESUME
+          <a onClick={() => scrollToSection('home')} className='hover:text-[#72e3af] cursor-pointer'>HOME</a>
+          <a onClick={() => scrollToSection('about')} className='hover:text-[#72e3af] cursor-pointer'>ABOUT</a>
+          <a onClick={() => scrollToSection('resume')} className='hover:text-[#72e3af] cursor-pointer'>RESUME</a>
+          <a onClick={() => scrollToSection('works')} className='hover:text-[#72e3af] cursor-pointer'>WORKS</a>
+          <a onClick={() => scrollToSection('contact')} className='hover:text-[#72e3af] cursor-pointer'>CONTACT</a>
+          <button className='bg-[#72e3af] px-6 py-2 text-black hover:bg-white rounded-sm text-base transition-colors duration-300 mt-4'>
+            Resume <IoDocumentTextOutline className="inline ml-2 text-lg" />
           </button>
         </div>
       )}

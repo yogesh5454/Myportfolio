@@ -1,5 +1,6 @@
 import React from "react";
 import "./Aboutdetails.css";
+import profile from "../images/profile.jpg";
 
 const Aboutdetails = () => {
   return (
@@ -17,7 +18,7 @@ const Aboutdetails = () => {
                 </div>
 
                 <img
-                  src="https://avatars.githubusercontent.com/u/84499534?v=4"
+                src={profile}
                   alt="Yogesh"
                   className="w-full h-auto md:h-120"
                 />
