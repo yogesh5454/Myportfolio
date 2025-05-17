@@ -1,3 +1,4 @@
+
 import { useEffect, useRef, useState } from "react";
 import { FaArrowDown } from "react-icons/fa";
 
@@ -56,23 +57,37 @@ export default function Head() {
     }
 
     const particles = [];
-    const numParticles = 100;
+    // Adjust number of particles based on screen width
+    let numParticles = 100;
+    
+    if (dimensions.width < 768) {
+      numParticles = 50; // Mobile
+    } else if (dimensions.width < 1024) {
+      numParticles = 75; // Tablet
+    }
+    
     for (let i = 0; i < numParticles; i++) {
       particles.push(new Particle());
     }
 
     function connectParticles() {
+      // Adjust connection distance based on screen size
+      let connectionDistance = 150;
+      if (dimensions.width < 768) {
+        connectionDistance = 100;
+      }
+      
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
           const distance = Math.sqrt(dx * dx + dy * dy);
 
-          if (distance < 150) {
+          if (distance < connectionDistance) {
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(255, 255, 255, ${1 - distance / 150})`;
+            ctx.strokeStyle = `rgba(255, 255, 255, ${1 - distance / connectionDistance})`;
             ctx.lineWidth = 1;
             ctx.stroke();
           }
@@ -106,8 +121,20 @@ export default function Head() {
     return () => clearInterval(interval);
   }, []);
 
+  // Scroll to about section
+  const scrollToAbout = () => {
+    const aboutSection = document.getElementById("about");
+    if (aboutSection) {
+      const offsetTop = aboutSection.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({
+        top: offsetTop,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
-    <div className="relative overflow-hidden bg-[#0f1d30] text-white min-h-screen px-4 md:px-10 lg:px-20 flex items-center justify-center">
+    <div id="home" className="relative overflow-hidden bg-[#0f1d30] text-white min-h-screen px-4 md:px-10 lg:px-20 flex items-center justify-center">
       <canvas ref={canvasRef} className="absolute top-0 left-0 w-full h-full" />
       <div className="flex flex-col items-center text-center max-w-2xl">
         <div className="relative w-32 h-32 md:w-40 md:h-40 mx-auto my-6 md:my-10">
@@ -132,7 +159,10 @@ export default function Head() {
         <div className="icons">
           <Icons/>
         </div>
-        <div className="flex gap-2 items-center py-3 mt-10 animate-bounce">
+        <div 
+          onClick={scrollToAbout}
+          className="flex gap-2 items-center py-3 mt-10 animate-bounce cursor-pointer hover:text-teal-400 transition-colors"
+        >
           <FaArrowDown /> <span>SCROLL DOWN</span>
         </div>
       </div>

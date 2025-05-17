@@ -94,8 +94,8 @@ const Experience = () => {
             <h2 className="text-xl md:text-2xl font-semibold m-0">Working Experience</h2>
           </div>
           
-          <div className="relative border-l-2 border-gray-700 pl-4">
-            {experienceData.map((item, index) => (
+ <div className="relative ">
+                        <div className="absolute left-3 top-0 bottom-0 w-0.5 bg-gray-600"></div>            {experienceData.map((item, index) => (
               <TimelineItem 
                 key={index}
                 period={item.period}
