@@ -1,46 +1,77 @@
-import React from "react";
+import React, { useState } from "react";
 import { CiShare1 } from "react-icons/ci";
 import { RiShareBoxFill } from "react-icons/ri";
 import { FaGithub } from "react-icons/fa";
+
 const Projectsdatafun = ({
   image,
   title,
   description,
   liveDemoUrl,
   codeUrl,
+  isMobile,
 }) => {
+  const [isActive, setIsActive] = useState(false);
+
   const handleRedirect = (url) => {
     if (url) {
       window.open(url, "_blank", "noopener,noreferrer");
     }
   };
+
+  const handleProjectClick = () => {
+    if (isMobile) {
+      setIsActive(!isActive);
+    }
+  };
+
   return (
-    <div className="' bg-[#1b2336] p-6 w-105 rounded-lg border shadow-2xl border-gray-700 transition-transform duration-500 delay-100 hover:-translate-y-2'">
+    <div 
+      className="bg-[#1b2336] rounded-lg w-105 overflow-hidden shadow-xl border border-gray-700 transition-transform duration-500 hover:-translate-y-2 m-2"
+      onClick={isMobile ? handleProjectClick : undefined}
+    >
       <div className="relative group overflow-hidden">
         <img
-          className="h-60 w-full object-cover transition-all duration-300 group-hover:blur-sm"
+          className={`h-48 md:h-56 w-full object-cover transition-all duration-300 ${
+            isMobile && isActive ? "blur-sm" : "group-hover:blur-sm"
+          }`}
           src={image}
           alt={title}
         />
-
-        <div className="absolute inset-0  flex items-center justify-center gap-5 opacity-0 -translate-x-full group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-500">
+        
+        {/* Action buttons - visible on hover for desktop, click for mobile */}
+        <div 
+          className={`absolute inset-0 flex items-center justify-center gap-5 transition-all duration-500 
+            ${isMobile 
+              ? isActive ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-full" 
+              : "opacity-0 -translate-x-full group-hover:translate-x-0 group-hover:opacity-100"}`
+          }
+        >
           <button
-            onClick={() => handleRedirect(liveDemoUrl)}
-            className="w-10 text-xl cursor-pointer h-10 bg-[#4ecca3] rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300"
+            onClick={(e) => {
+              e.stopPropagation();
+              handleRedirect(liveDemoUrl);
+            }}
+            className="w-10 text-xl cursor-pointer h-10 bg-teal-500 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300"
           >
-           <RiShareBoxFill/>
+            <RiShareBoxFill />
           </button>
           <button
-            onClick={() => handleRedirect(codeUrl)}
-            className="w-10 text-xl cursor-pointer h-10 bg-[#4ecca3] rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300"
+            onClick={(e) => {
+              e.stopPropagation();
+              handleRedirect(codeUrl);
+            }}
+            className="w-10 text-xl cursor-pointer h-10 bg-teal-500 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300"
           >
             <FaGithub />
           </button>
         </div>
       </div>
 
-      <h1 className="text-xl text-white pt-4 font-medium">{title}</h1>
-      <h3 className="text-sm pt-1 text-gray-300">{description}</h3>
+      <div className="p-4">
+        <h1 className="text-lg md:text-xl text-white font-medium">{title}</h1>
+        <h3 className="text-xs md:text-sm mt-1 text-gray-300">{description}</h3>
+      </div>
     </div>
   );
 };

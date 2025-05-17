@@ -52,9 +52,9 @@ const Skills = () => {
 
   return (
     <div>
-      <div className="bg-[#111c30] py-15 px-45">
-        <div className="relative overflow-hidden pb-14 text-center">
-          <h2 className="relative z-10 mb-2 uppercase text-white text-5xl py-3 font-semibold">
+      <div className="bg-[#111c30] py-8 px-4 md:py-15 md:px-45">
+        <div className="relative overflow-hidden pb-8 md:pb-14 text-center">
+          <h2 className="relative z-10 mb-2 uppercase text-white text-3xl md:text-5xl py-3 font-semibold">
             My Skills
           </h2>
 
@@ -63,21 +63,23 @@ const Skills = () => {
           </div>
 
           <span
-            className="pointer-events-none absolute left-1/2 -top-2 z-0 -translate-x-1/2 transform text-9xl font-bold uppercase text-heading opacity-10 text-white"
+            className="pointer-events-none absolute left-1/2 -top-2 z-0 -translate-x-1/2 transform text-6xl md:text-9xl font-bold uppercase text-heading opacity-10 text-white"
             style={{ willChange: "transform" }}
           >
             Skills
           </span>
         </div>
 
-        <div className="flex flex-wrap gap-5">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-5">
           {skills.map((skill, index) => (
             <div
-              className="bg-[#1a2437]  p-5 w-79 justify-items-center rounded-lg transition-transform duration-500 delay-100 hover:-translate-y-2"
+              className="bg-[#1a2437] p-3 md:p-5 rounded-lg transition-transform duration-500 delay-100 hover:-translate-y-2 flex flex-col items-center"
               key={index}
             >
-              <div className="text-[#4ecca3] text-8xl pb-7 ">{skill.icons}</div>
-              <h1 className="text-white text-2xl pb-4 font-semibold">
+              <div className="text-[#4ecca3] text-4xl sm:text-5xl md:text-6xl lg:text-8xl pb-3 md:pb-7">
+                {skill.icons}
+              </div>
+              <h1 className="text-white text-base sm:text-xl md:text-2xl pb-2 md:pb-4 font-semibold text-center">
                 {skill.label}
               </h1>
             </div>
