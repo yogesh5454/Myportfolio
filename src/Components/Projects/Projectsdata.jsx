@@ -128,23 +128,43 @@ const Projectsdata = () => {
   return (
     <div>
       {/* Filter Buttons */}
-      <div className="text-white justify-center gap-2 md:gap-3 lg:gap-5 text-sm md:text-base lg:text-xl py-6 md:py-8 flex flex-wrap">
-        {filterOptions.map((filter) => (
+  <div className=" justify-center gap-2 md:gap-3 lg:gap-5 text-sm md:text-base lg:text-xl py-6 md:py-8 flex flex-wrap">
+      {filterOptions.map((filter) => {
+        const isActive = activeFilter === filter.id;
+
+        return (
           <motion.button
             key={filter.id}
-            className={`py-2 px-3 md:px-4 lg:px-6 shadow-lg rounded-lg transition-colors duration-300 cursor-pointer ${
-              activeFilter === filter.id
-                ? "bg-teal-500 text-black"
-                : "bg-[#1b2336]"
-            }`}
             onClick={() => handleFilterClick(filter.id)}
+            className={`relative overflow-hidden py-2 px-3 md:px-4 lg:px-6 shadow-lg rounded-lg cursor-pointer group`}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            {filter.label}
+            {/* Text Layer */}
+            <span
+              className={`relative z-10 transition-colors duration-300 ${
+                isActive ? "text-black" : "text-teal-500"
+              }`}
+            >
+              {filter.label}
+            </span>
+
+            {/* Hover overlay */}
+            {!isActive && (
+              <>
+                <span className="absolute inset-0  bg-white translate-y-[-100%] group-hover:translate-y-0 transition-transform duration-1000 ease-in-out z-0"></span>
+                <span className="absolute inset-0 bg-[#1b2336] z-[-1]"></span>
+              </>
+            )}
+
+            {/* Active state (solid background without animation) */}
+            {isActive && (
+              <span className="absolute inset-0 bg-teal-500 z-0"></span>
+            )}
           </motion.button>
-        ))}
-      </div>
+        );
+      })}
+    </div>
 
       <div className="flex flex-col items-center">
         {/* Project Grid */}
@@ -180,29 +200,39 @@ const Projectsdata = () => {
         </motion.div>
 
         {/* Action Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 mt-8">
-          {visibleProjects < filteredProjects.length && (
-            <motion.button
-              onClick={loadMoreProjects}
-              className="px-5 py-2 font-medium rounded-md bg-teal-500 text-black cursor-pointer transition-colors duration-300"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Load More Projects
-            </motion.button>
-          )}
+     <div className="flex flex-col sm:flex-row gap-4 mt-8">
+      {visibleProjects < filteredProjects.length && (
+        <motion.button
+          onClick={loadMoreProjects}
+          className="relative overflow-hidden px-5 bg-teal-500 cursor-pointer py-2 font-medium rounded-md text-black group"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <span className="relative z-10">Load More Projects</span>
+          <span className="absolute inset-0 bg-white translate-y-[-100%] group-hover:translate-y-0 transition-transform duration-1000 ease-in-out z-0"></span>
+          <span className="absolute inset-0 bg-teal-500 z-[-1]"></span>
+        </motion.button>
+      )}
 
-          <motion.button 
-            className="flex items-center justify-center px-5 py-2 font-medium rounded-md bg-teal-500 text-black cursor-pointer transition-colors duration-300"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+      <motion.button
+        className="relative overflow-hidden bg-teal-500 flex items-center cursor-pointer justify-center px-5 py-2 font-medium rounded-md text-black group"
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        <span className="relative z-10 flex items-center gap-2">
+          <FaGithub className="text-lg" />
+          <a
+            href="https://github.com/yogesh5454"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <FaGithub className="mr-2 text-lg" />
-            <a href="https://github.com/yogesh5454" target="_blank" rel="noopener noreferrer">
-              View More on GitHub
-            </a>
-          </motion.button>
-        </div>
+            View More on GitHub
+          </a>
+        </span>
+        <span className="absolute inset-0 bg-white translate-y-[-100%] group-hover:translate-y-0 transition-transform duration-1000 ease-in-out z-0"></span>
+        <span className="absolute inset-0 bg-teal-500 z-[-1]"></span>
+      </motion.button>
+    </div>
 
         {/* Status Messages */}
         {visibleProjects >= filteredProjects.length &&

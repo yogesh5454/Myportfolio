@@ -80,12 +80,15 @@ const Contact = () => {
               className="w-full p-2 md:p-3 rounded bg-[#111827] text-white placeholder-gray-400 border border-transparent focus:border-[#4ecca3] outline-none transition duration-200 text-sm"
             ></textarea>
           </div>
-          <button
-            type="submit"
-            className="bg-teal-400 hover:bg-[#4ecca3] transition text-black px-6 py-2 font-semibold rounded text-sm uppercase"
-          >
-            SEND MAIL
-          </button>
+           <button className="relative cursor-pointer overflow-hidden px-4 py-2 text-black flex items-center gap-2 rounded-sm text-sm sm:text-base border-none mt-4 z-10 group">
+      <span className="relative z-10 flex items-center gap-2 transition-colors duration-700 group-hover:text-black">
+        SEND MAIL
+      </span>
+
+      <span className="absolute inset-0 bg-white translate-y-[-100%] group-hover:translate-y-0 transition-transform duration-1000 ease-in-out z-0"></span>
+
+      <span className="absolute inset-0 bg-[#72e3af] z-[-1]"></span>
+    </button>  
         </form>
       </div>
     </div>

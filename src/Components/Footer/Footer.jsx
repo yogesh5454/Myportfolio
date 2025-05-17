@@ -9,16 +9,22 @@ const Footer = () => {
 
   return (
     <div className="bg-[#0f1d30] px-4 md:px-8 lg:px-16 flex flex-col sm:flex-row items-center justify-between border-t border-gray-700 py-4">
-      <div className="flex gap-2 mb-3 sm:mb-0">
-        {icons.map((Icon, index) => (
-          <a
-            key={index}
-            className="flex items-center justify-center w-8 h-8 text-white border border-gray-700 rounded-sm hover:bg-gray-700 transition-colors duration-300"
-          >
-            <Icon className="text-sm" />
-          </a>
-        ))}
-      </div>
+        <div className="flex gap-3 ">
+      {icons.map((Icon, index) => (
+        <div
+          key={index}
+          className="relative cursor-pointer w-10 h-10 overflow-hidden rounded-sm group"
+        >
+          <div className="absolute inset-0 flex items-center justify-center border border-gray-700 text-white transition-transform duration-300 group-hover:-translate-y-full">
+            <Icon className="text-lg" />
+          </div>
+
+          <div className="absolute inset-0 flex items-center justify-center bg-teal-500 text-white transition-transform duration-300 translate-y-full group-hover:translate-y-0">
+            <Icon className="text-lg" />
+          </div>
+        </div>
+      ))}
+    </div>
 
       <div className="text-gray-400 text-sm">
         <h3>

@@ -109,9 +109,15 @@ const Nav = () => {
         </div>
 
         <div className='hidden md:block resume'>
-          <button className='bg-[#72e3af] px-4 py-2 text-black hover:bg-white flex items-center gap-2 rounded-sm text-sm sm:text-base transition-colors duration-300'>
-            Resume <IoDocumentTextOutline className="text-lg" />
-          </button>
+           <button className="relative cursor-pointer overflow-hidden px-4 py-2 text-black flex items-center gap-2 rounded-sm text-sm sm:text-base border-none z-10 group">
+      <span className="relative z-10 flex items-center gap-2 transition-colors duration-700 group-hover:text-black">
+        Resume <IoDocumentTextOutline className="text-lg" />
+      </span>
+
+      <span className="absolute inset-0 bg-white translate-y-[-100%] group-hover:translate-y-0 transition-transform duration-1000 ease-in-out z-0"></span>
+
+      <span className="absolute inset-0 bg-[#72e3af] z-[-1]"></span>
+    </button>
         </div>
       </div>
 

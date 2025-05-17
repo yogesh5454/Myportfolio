@@ -65,8 +65,15 @@ const Aboutdetails = () => {
             </li>
           </ul>
 
-          <button className="bg-[#4ecca3] py-2 px-3 mt-6 rounded-md text-base md:text-lg text-black w-full md:w-auto">Download Resume</button>
-        </div>
+  <button className="relative cursor-pointer overflow-hidden px-4 py-2 text-black flex items-center gap-2 rounded-sm text-sm sm:text-base border-none mt-4 z-10 group">
+      <span className="relative z-10 flex items-center gap-2 transition-colors duration-700 group-hover:text-black">
+        Download Resume 
+      </span>
+
+      <span className="absolute inset-0 bg-white translate-y-[-100%] group-hover:translate-y-0 transition-transform duration-1000 ease-in-out z-0"></span>
+
+      <span className="absolute inset-0 bg-[#72e3af] z-[-1]"></span>
+    </button>        </div>
       </div>
     </div>
   );
