@@ -27,7 +27,7 @@ const Projectsdatafun = ({
 
   return (
     <div 
-      className="bg-[#1b2336] rounded-lg w-105 overflow-hidden shadow-xl border border-gray-700 transition-transform duration-500 hover:-translate-y-2 m-2"
+      className="bg-[#1b2336] rounded-lg overflow-hidden shadow-xl border border-gray-700 transition-transform duration-500 hover:-translate-y-2 m-2"
       onClick={isMobile ? handleProjectClick : undefined}
     >
       <div className="relative group overflow-hidden">
