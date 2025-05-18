@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { IoIosSchool } from "react-icons/io";
 import { HiBuildingOffice } from "react-icons/hi2";
 
@@ -8,13 +8,17 @@ const Experience = () => {
       period: "2018 – 2020",
       title: "Intermediate Level",
       institution: "Kathmandu Model Secondary School,Bagbazzar",
-      description: "Completed higher secondary education with a focus on science. Studied core subjects including Physics, Chemistry, and Mathematics"
+      description:
+        "Completed higher secondary education with a focus on science. Studied core subjects including Physics, Chemistry, and Mathematics",
     },
     {
       period: "2021 – Present",
-      title: "Bachelor of Science in Computer Science and Information Technology",
-      institution: "Asian School of Management and Technology(Affiliated to T.U),Gongabu",
-      description: "Pursuing a Bachelor's degree in CSIT. Completed coursework in programming languages (C, C++, C#), Data Structures & Algorithms (DSA),Web Technology and System Analysis & Design (SAD) across eight semesters."
+      title:
+        "Bachelor of Science in Computer Science and Information Technology",
+      institution:
+        "Asian School of Management and Technology(Affiliated to T.U),Gongabu",
+      description:
+        "Pursuing a Bachelor's degree in CSIT. Completed coursework in programming languages (C, C++, C#), Data Structures & Algorithms (DSA),Web Technology and System Analysis & Design (SAD) across eight semesters.",
     },
   ];
 
@@ -23,7 +27,8 @@ const Experience = () => {
       period: "2025/feb - 2025/may",
       title: "Frontend Developer Intern",
       company: "Softtech Foundation",
-      description: "During my internship as a Frontend Developer, I was responsible for building and enhancing responsive user interfaces using HTML, CSS, and JavaScript,React and Tailwind."
+      description:
+        "During my internship as a Frontend Developer, I was responsible for building and enhancing responsive user interfaces using HTML, CSS, and JavaScript,React and Tailwind.",
     },
   ];
 
@@ -33,7 +38,9 @@ const Experience = () => {
       <div className="inline-block bg-gray-700 text-white text-xs md:text-sm px-3 py-1 rounded-full mb-2">
         {period}
       </div>
-      <h3 className="text-teal-400 text-lg md:text-xl font-semibold m-0 mb-1">{title}</h3>
+      <h3 className="text-[#4ecca3] text-lg md:text-xl font-semibold m-0 mb-1">
+        {title}
+      </h3>
       <h4 className="text-white text-sm md:text-base m-0 mb-2">{subtitle}</h4>
       <p className="text-gray-400 text-xs md:text-sm leading-relaxed">
         {description}
@@ -48,8 +55,8 @@ const Experience = () => {
           My Resume
         </h2>
 
-        <div className="relative z-10 mx-auto h-1 w-28 md:w-40 bg-gradient-to-r from-transparent via-teal-400 to-transparent rounded-full overflow-hidden">
-          <span className="dot-circle absolute top-1/2 rounded-full bg-teal-400"></span>
+        <div className="relative z-10 mx-auto h-1 w-28 md:w-40 bg-gradient-to-r from-transparent via-[#4ecca3] to-transparent rounded-full overflow-hidden">
+          <span className="dot-circle absolute top-1/2 rounded-full bg-[#4ecca3]"></span>
         </div>
 
         <span
@@ -59,22 +66,23 @@ const Experience = () => {
           Resume
         </span>
       </div>
-      
+
       <div className="flex flex-col md:flex-row gap-8 max-w-6xl mx-auto">
-        {/* Education Section */}
         <div className="w-full md:w-1/2">
           <div className="flex items-center gap-3 mb-5">
-            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-800 text-teal-400 text-xl">
+            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-800 text-[#4ecca3] text-xl">
               <IoIosSchool />
             </div>
-            <h2 className="text-xl md:text-2xl font-semibold m-0">Educational Qualification</h2>
+            <h2 className="text-xl md:text-2xl font-semibold m-0">
+              Educational Qualification
+            </h2>
           </div>
-          
+
           <div className="relative ">
-                        <div className="absolute left-3 top-0 bottom-0 w-0.5 bg-gray-600"></div>
+            <div className="absolute left-3 top-0 bottom-0 w-0.5 bg-gray-600"></div>
 
             {educationData.map((item, index) => (
-              <TimelineItem 
+              <TimelineItem
                 key={index}
                 period={item.period}
                 title={item.title}
@@ -85,18 +93,20 @@ const Experience = () => {
           </div>
         </div>
 
-        {/* Experience Section */}
         <div className="w-full md:w-1/2">
           <div className="flex items-center gap-3 mb-5">
-            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-800 text-teal-400 text-xl">
+            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-800 text-[#4ecca3] text-xl">
               <HiBuildingOffice />
             </div>
-            <h2 className="text-xl md:text-2xl font-semibold m-0">Working Experience</h2>
+            <h2 className="text-xl md:text-2xl font-semibold m-0">
+              Working Experience
+            </h2>
           </div>
-          
- <div className="relative ">
-                        <div className="absolute left-3 top-0 bottom-0 w-0.5 bg-gray-600"></div>            {experienceData.map((item, index) => (
-              <TimelineItem 
+
+          <div className="relative ">
+            <div className="absolute left-3 top-0 bottom-0 w-0.5 bg-gray-600"></div>{" "}
+            {experienceData.map((item, index) => (
+              <TimelineItem
                 key={index}
                 period={item.period}
                 title={item.title}
@@ -108,17 +118,7 @@ const Experience = () => {
         </div>
       </div>
 
-      {/* Scroll to top button (as shown in the image) */}
-      <div className="fixed bottom-6 right-6">
-        <button 
-          className="w-10 h-10 bg-teal-400 text-gray-900 rounded-full flex items-center justify-center shadow-lg hover:bg-teal-300 transition-colors"
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
-          </svg>
-        </button>
-      </div>
+   
     </div>
   );
 };

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Projectsdatafun from "./Projectsdatafun";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaGithub } from "react-icons/fa";
+import { FaAngleUp } from "react-icons/fa";
 
 import camera from "../images/camera.png";
 import disaster from "../images/Disaster.png";
@@ -76,7 +77,6 @@ const Projectsdata = () => {
   const [activeFilter, setActiveFilter] = useState("all");
   const [isMobile, setIsMobile] = useState(false);
 
-  // Check if device is mobile
   useEffect(() => {
     const checkIsMobile = () => {
       setIsMobile(window.innerWidth < 768);
@@ -119,7 +119,6 @@ const Projectsdata = () => {
 
   return (
     <div>
-      {/* Filter Buttons */}
   <div className=" justify-center gap-2 md:gap-3 lg:gap-5 text-sm md:text-base lg:text-xl py-6 md:py-8 flex flex-wrap">
       {filterOptions.map((filter) => {
         const isActive = activeFilter === filter.id;
@@ -132,16 +131,14 @@ const Projectsdata = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            {/* Text Layer */}
             <span
               className={`relative z-10 transition-colors duration-300 ${
-                isActive ? "text-black" : "text-teal-500"
+                isActive ? "text-black" : "text-[#4ecca3]"
               }`}
             >
               {filter.label}
             </span>
 
-            {/* Hover overlay */}
             {!isActive && (
               <>
                 <span className="absolute inset-0  bg-white translate-y-[-100%] group-hover:translate-y-0 transition-transform duration-1000 ease-in-out z-0"></span>
@@ -149,9 +146,8 @@ const Projectsdata = () => {
               </>
             )}
 
-            {/* Active state (solid background without animation) */}
             {isActive && (
-              <span className="absolute inset-0 bg-teal-500 z-0"></span>
+              <span className="absolute inset-0 bg-[#4ecca3] z-0"></span>
             )}
           </motion.button>
         );
@@ -159,7 +155,6 @@ const Projectsdata = () => {
     </div>
 
       <div className="flex flex-col items-center">
-        {/* Project Grid */}
         <motion.div 
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10 justify-items-center" 
           layout
@@ -191,23 +186,22 @@ const Projectsdata = () => {
           </AnimatePresence>
         </motion.div>
 
-        {/* Action Buttons */}
      <div className="flex flex-col sm:flex-row gap-4 mt-8">
       {visibleProjects < filteredProjects.length && (
         <motion.button
           onClick={loadMoreProjects}
-          className="relative overflow-hidden px-5 bg-teal-500 cursor-pointer py-2 font-medium rounded-md text-black group"
+          className="relative overflow-hidden px-5 bg-[#4ecca3] cursor-pointer py-2 font-medium rounded-md text-black group"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
           <span className="relative z-10">Load More Projects</span>
           <span className="absolute inset-0 bg-white translate-y-[-100%] group-hover:translate-y-0 transition-transform duration-1000 ease-in-out z-0"></span>
-          <span className="absolute inset-0 bg-teal-500 z-[-1]"></span>
+          <span className="absolute inset-0 bg-[#4ecca3] z-[-1]"></span>
         </motion.button>
       )}
 
       <motion.button
-        className="relative overflow-hidden bg-teal-500 flex items-center cursor-pointer justify-center px-5 py-2 font-medium rounded-md text-black group"
+        className="relative overflow-hidden bg-[#4ecca3] flex items-center cursor-pointer justify-center px-5 py-2 font-medium rounded-md text-black group"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
@@ -222,11 +216,10 @@ const Projectsdata = () => {
           </a>
         </span>
         <span className="absolute inset-0 bg-white translate-y-[-100%] group-hover:translate-y-0 transition-transform duration-1000 ease-in-out z-0"></span>
-        <span className="absolute inset-0 bg-teal-500 z-[-1]"></span>
+        <span className="absolute inset-0 bg-[#4ecca3] z-[-1]"></span>
       </motion.button>
     </div>
 
-        {/* Status Messages */}
         {visibleProjects >= filteredProjects.length &&
           filteredProjects.length > 0 && (
             <motion.button
@@ -252,15 +245,13 @@ const Projectsdata = () => {
         )}
       </div>
 
-      {/* Scroll to top button */}
       <div className="fixed bottom-6 right-6">
         <button 
-          className="w-10 h-10 bg-teal-500 text-gray-900 rounded-full flex items-center justify-center shadow-lg hover:bg-teal-400 transition-colors"
+          className="w-10 h-10 bg-[#4ecca3] text-2xl cursor-pointer text-gray-900 rounded-full flex items-center justify-center shadow-lg  transition-colors"
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
-          </svg>
+          <FaAngleUp />
+
         </button>
       </div>
     </div>

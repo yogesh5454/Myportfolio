@@ -39,7 +39,6 @@ const Projectsdatafun = ({
           alt={title}
         />
         
-        {/* Action buttons - visible on hover for desktop, click for mobile */}
         <div 
           className={`absolute inset-0 flex items-center justify-center gap-5 transition-all duration-500 
             ${isMobile 
@@ -52,7 +51,7 @@ const Projectsdatafun = ({
               e.stopPropagation();
               handleRedirect(liveDemoUrl);
             }}
-            className="w-10 text-xl cursor-pointer h-10 bg-teal-500 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300"
+            className="w-10 text-xl cursor-pointer h-10 bg-[#4ecca3] rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300"
           >
             <RiShareBoxFill />
           </button>
@@ -61,7 +60,7 @@ const Projectsdatafun = ({
               e.stopPropagation();
               handleRedirect(codeUrl);
             }}
-            className="w-10 text-xl cursor-pointer h-10 bg-teal-500 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300"
+            className="w-10 text-xl cursor-pointer h-10 bg-[#4ecca3] rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300"
           >
             <FaGithub />
           </button>

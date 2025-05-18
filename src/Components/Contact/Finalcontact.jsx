@@ -11,7 +11,7 @@ const Finalcontact = () => {
           </h2>
 
           <div className="relative z-10 mx-auto h-1 w-40 bg-gradient-to-r from-transparent via-teal-400 to-transparent rounded-full overflow-hidden">
-            <span className="dot-circle absolute top-1/2 rounded-full bg-teal-400"></span>
+            <span className="dot-circle absolute top-1/2 rounded-full bg-[#4ecca3]"></span>
           </div>
 
           <span

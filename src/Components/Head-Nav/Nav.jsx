@@ -8,20 +8,15 @@ const Nav = () => {
   const [visible, setVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
-  // Handle scroll events
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       
-      // Determine if we've scrolled down past the header (assuming header is 100vh)
       const isScrolled = currentScrollY > window.innerHeight * 0.8;
       
-      // Handle navbar visibility with direction detection
       if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        // Scrolling down
         setVisible(false);
       } else {
-        // Scrolling up
         setVisible(true);
       }
       
@@ -33,7 +28,6 @@ const Nav = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
-  // Prevent scrolling when menu is open
   useEffect(() => {
     if (menuOpen) {
       document.body.style.overflow = 'hidden';
@@ -43,7 +37,6 @@ const Nav = () => {
     return () => (document.body.style.overflow = 'auto');
   }, [menuOpen]);
 
-  // Scroll to section function
   const scrollToSection = (id) => {
     setMenuOpen(false);
     
@@ -121,7 +114,6 @@ const Nav = () => {
         </div>
       </div>
 
-      {/* Fullscreen Mobile Menu - Increased z-index and used fixed positioning with pointer-events-auto */}
       {menuOpen && (
         <div className='fixed inset-0 w-full h-screen bg-[#0f1d30] flex flex-col items-center justify-center gap-6 z-50 text-white text-lg pointer-events-auto'>
           <button onClick={() => setMenuOpen(false)} className='absolute top-6 right-6 text-3xl text-[#72e3af]'>

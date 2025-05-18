@@ -24,7 +24,7 @@ const Icons = () => {
             <Icon className="text-lg" />
           </div>
           
-          <div className="absolute inset-0 flex items-center justify-center bg-teal-500 text-white transition-transform duration-300 translate-y-full group-hover:translate-y-0">
+          <div className="absolute inset-0 flex items-center justify-center bg-[#4ecca3] text-white transition-transform duration-300 translate-y-full group-hover:translate-y-0">
             <Icon className="text-lg" />
           </div>
         </a>

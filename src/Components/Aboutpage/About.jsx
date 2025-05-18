@@ -8,8 +8,8 @@ const About = () => {
       <div className="relative overflow-hidden pb-10 md:pb-14 text-center">
         <h2 className="relative z-10 mb-2 uppercase text-white text-3xl md:text-5xl py-3 font-semibold">About Me</h2>
 
-        <div className="relative z-10 mx-auto h-1 w-40 bg-gradient-to-r from-transparent via-teal-400 to-transparent rounded-full overflow-hidden">
-          <span className="dot-circle absolute top-1/2 rounded-full bg-teal-400"></span>
+        <div className="relative z-10 mx-auto h-1 w-40 bg-gradient-to-r from-transparent via-[#4ecca3] to-transparent rounded-full overflow-hidden">
+          <span className="dot-circle absolute top-1/2 rounded-full bg-[#4ecca3]"></span>
         </div>
 
         <span

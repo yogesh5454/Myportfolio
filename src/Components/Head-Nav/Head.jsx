@@ -122,7 +122,6 @@ export default function Head() {
     return () => clearInterval(interval);
   }, []);
 
-  // Scroll to about section
   const scrollToAbout = () => {
     const aboutSection = document.getElementById("about");
     if (aboutSection) {
@@ -136,7 +135,6 @@ export default function Head() {
 
   return (
     <div id="home" className="relative overflow-hidden bg-[#0f1d30] text-white min-h-screen px-4 md:px-10 lg:px-20 flex items-center justify-center">
-      {/* Canvas with lower z-index to ensure it doesn't block the mobile menu */}
       <canvas ref={canvasRef} className="absolute top-0 left-0 w-full h-full z-0" />
       
       <div className="relative z-10 flex flex-col items-center text-center max-w-2xl">
@@ -164,7 +162,7 @@ export default function Head() {
         </div>
         <div 
           onClick={scrollToAbout}
-          className="flex gap-2 items-center py-3 mt-10 animate-bounce cursor-pointer hover:text-teal-400 transition-colors"
+          className="flex gap-2 items-center py-3 mt-10 animate-bounce cursor-pointer hover:text-[#4ecca3] transition-colors"
         >
           <FaArrowDown /> <span>SCROLL DOWN</span>
         </div>
