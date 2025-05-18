@@ -9,7 +9,6 @@ import ecommerce from "../images/Ecommerce.png";
 import hosttar from "../images/Hosttar.png";
 import nike from "../images/nike.png";
 import noteapp from "../images/noteapp.png";
-import portfolio from "../images/portfolio.png";
 import solo from "../images/solo.png";
 
 const Projectsdata = () => {
@@ -54,14 +53,7 @@ const Projectsdata = () => {
       codeUrl: "https://github.com/yogesh5454/Solo",
       category: ["html&css", "js"],
     },
-    {
-      image: portfolio,
-      title: "Portfolio",
-      description: "Built portfolio website for myself",
-      liveDemoUrl: "https://portfolio-omega-three-15.vercel.app/",
-      codeUrl: "https://github.com/yogesh5454/Portfolio",
-      category: ["react"],
-    },
+   
     {
       image: camera,
       title: "Camshop",
