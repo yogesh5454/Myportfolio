@@ -8,6 +8,7 @@ const Nav = () => {
   const [visible, setVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
+
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -48,6 +49,11 @@ const Nav = () => {
         behavior: 'smooth'
       });
     }
+  };
+
+   const handleDownloadResume = () => {
+   
+    window.open('https://drive.google.com/file/d/1vOUahbAWtCkjTyktHHW0cUvLs4EAIq-w/view?usp=sharing', '_blank');
   };
 
   return (
@@ -102,7 +108,7 @@ const Nav = () => {
         </div>
 
         <div className='hidden md:block resume'>
-           <button className="relative cursor-pointer overflow-hidden px-4 py-2 text-black flex items-center gap-2 rounded-sm text-sm sm:text-base border-none z-10 group">
+           <button onClick={handleDownloadResume} className="relative cursor-pointer overflow-hidden px-4 py-2 text-black flex items-center gap-2 rounded-sm text-sm sm:text-base border-none z-10 group">
       <span className="relative z-10 flex items-center gap-2 transition-colors duration-700 group-hover:text-black">
         Resume <IoDocumentTextOutline className="text-lg" />
       </span>
@@ -124,7 +130,7 @@ const Nav = () => {
           <a onClick={() => scrollToSection('resume')} className='hover:text-[#72e3af] cursor-pointer'>RESUME</a>
           <a onClick={() => scrollToSection('works')} className='hover:text-[#72e3af] cursor-pointer'>WORKS</a>
           <a onClick={() => scrollToSection('contact')} className='hover:text-[#72e3af] cursor-pointer'>CONTACT</a>
-          <button className='bg-[#72e3af] px-6 py-2 text-black hover:bg-white rounded-sm text-base transition-colors duration-300 mt-4'>
+          <button onClick={handleDownloadResume} className='bg-[#72e3af] px-6 py-2 text-black hover:bg-white rounded-sm text-base transition-colors duration-300 mt-4'>
             Resume <IoDocumentTextOutline className="inline ml-2 text-lg" />
           </button>
         </div>
